@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# H8Coin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi iniciado via [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Autores:
 
-In the project directory, you can run:
+- Fernanda Rodrigues
+- Nacib Neme
+- Vinícius Brito
+
+## Scripts disponíveis
+
+No diretório raiz, podem ser executados os seguintes comandos:
 
 ### `yarn start`
 
