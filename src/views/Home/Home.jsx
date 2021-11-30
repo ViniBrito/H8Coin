@@ -1,20 +1,35 @@
-import logo from "../../assets/logo.svg";
 import "./Home.css";
+import { CustomGrid, Item } from "../../components/CustomGrid";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
 function Home() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Toda jornada começa com o primeiro passo.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Aprenda React
-        </a>
+        <CustomGrid>
+          <Grid item xs={12}>
+            <Item>Bem-vindo(a) ao H8Coin!</Item>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              style={{ minWidth: "100%", flexShrink: 0 }}
+              variant="contained"
+              href="/login/default"
+            >
+              Acessar como Usuário padrão
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              style={{ minWidth: "100%", flexShrink: 0 }}
+              variant="contained"
+              href="/login/admin"
+            >
+              Acessar como Admin
+            </Button>
+          </Grid>
+        </CustomGrid>
       </header>
     </div>
   );
