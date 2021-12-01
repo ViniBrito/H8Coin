@@ -1,24 +1,33 @@
-import logo from "../../assets/logo.svg";
 import { useParams } from "react-router-dom";
-import "./Home.css";
+import "./Login.css";
+import { CustomGrid, Item } from "../../components/CustomGrid";
+import Grid from "@material-ui/core/Grid";
 
 function Login() {
   const { user } = useParams();
 
+  const params = new URLSearchParams(window.location.search);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>José Hamilton esteve aqui</p>
-        <p>Versão {user} da página.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Aprenda React
-        </a>
+    <div className="main">
+      <header>
+        <CustomGrid>
+          <Grid item xs={20}>
+            <Item style={{ textAlign: "left" }}>
+              Seja bem-vindo(a), morador do H8-X, 720
+            </Item>
+          </Grid>
+          {user === "admin" && (
+            <Grid item xs={20}>
+              <Item>Conteúdo exclusivo para {user}</Item>
+            </Grid>
+          )}
+          {user === "default" && params.get("president") === "1" && (
+            <Grid item xs={20}>
+              <Item>Conteúdo exclusivo para presidas.</Item>
+            </Grid>
+          )}
+        </CustomGrid>
       </header>
     </div>
   );
