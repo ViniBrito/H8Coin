@@ -1,5 +1,6 @@
 import TextField from "@material-ui/core/TextField";
 import { styled } from "@material-ui/core/styles";
+import React from "react";
 
 const Custom = styled(TextField)({
   "& label.Mui-focused": {
@@ -15,13 +16,14 @@ const Custom = styled(TextField)({
   },
 });
 
-const FormLabel = ({ label, error, onChange, onBlur, value }) => {
+const FormLabel = ({ label, error, help, onChange, onBlur, value }) => {
   return (
     <Custom
       required
       style={{ padding: "1%" }}
       label={label}
       error={error}
+      helperText={help}
       onChange={onChange}
       onBlur={onBlur}
       value={value}
@@ -30,4 +32,4 @@ const FormLabel = ({ label, error, onChange, onBlur, value }) => {
   );
 };
 
-export default FormLabel;
+export default React.memo(FormLabel);
