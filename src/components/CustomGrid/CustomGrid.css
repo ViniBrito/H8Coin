@@ -1,16 +1,14 @@
 .container {
-  background-color: #f8c300;
-  padding: 2%;
+  background-color: #fff;
+  padding: 0.5%;
   align-content: center;
   justify-content: center;
 }
 
 .grid {
   display: flex;
-  flex-grow: 1;
-  width: 50%;
-  margin-top: 20%;
-  margin-left: 25%;
-  background-color: #7eb6e3;
-  padding: 2%;
+  align-content: center;
+  justify-content: center;
+  background-color: #f8c300;
+  padding: 5%;
 }

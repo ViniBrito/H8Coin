@@ -4,8 +4,23 @@ code {
 }
 
 .main {
-  margin-top: 20%;
+  margin-top: 15%;
   flex-shrink: 0;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 15%;
+}
+
+.init-item {
+  text-align: left;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: spaceAround;
 }
 
 body {
