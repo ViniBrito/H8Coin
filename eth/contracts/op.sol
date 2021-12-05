@@ -58,7 +58,7 @@ contract H8Coin {
 
 
     constructor() {
-        cohab.director =  0xb5BFd944da94a6f09ec329CdFEdc329214EC8A18;
+        cohab.director =  msg.sender;
     }
 
     mapping(address => Student) public studentsMap;
