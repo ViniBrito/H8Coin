@@ -28,7 +28,6 @@ contract H8Coin {
         string year;
         uint16 score;
         string ap;
-        ScoreEntry[] pontos;
     }
 
     struct Initiative {
@@ -48,17 +47,19 @@ contract H8Coin {
         address director;
     }
 
-    address public owner;
-
     Student[] public students;
     Apartment[] public aps;
     Initiative[] public initiatives;
     ScoreEntry[] public scoreEntries;
     Cohab public cohab;
 
-
+    address constant public noAdd =  0x0000000000000000000000000000000000000000;
+                                   
     constructor() {
-        cohab.director =  msg.sender;
+        cohab.director = msg.sender;
+
+        /*Inserir base: apartamentos, moradores e iniciativas, com as funções implementadas*/
+
     }
 
     mapping(address => Student) public studentsMap;
@@ -78,10 +79,8 @@ contract H8Coin {
      * @param year student year (e.g. "2018")
      * @param ap student ap (e.g. "201")
      */
-
     function addStudent(address addr, string memory name, string memory year, string memory ap) public {
         require(msg.sender == cohab.director, "Not authorized.");
-
         Student memory student_ = Student({
             name: name,
             year: year,
@@ -101,19 +100,18 @@ contract H8Coin {
      */
     function addAp(string memory apBlock, string memory apCode, uint8 numSpots) public {
         require(msg.sender == cohab.director, "Not authorized.");
-
         Apartment memory ap_ = Apartment({
             apBlock: apBlock,
             apCode: apCode,
             numSpots: numSpots,
-            students: [address(0), address(0), address(0), address(0), address(0), address(0)]
+            students: [noAdd, noAdd, noAdd, noAdd, noAdd, noAdd]
         });
         aps.push(ap_);
         apsMap[apCode] = ap_;
     }
 
     function addPresident(address addr) public{
-        require(isStudentPresident(msg.sender), "Must be president to do this");
+        require(isCohab(msg.sender), "Must be president to do this");
         studentsMap[addr].president = true;
     }
 
@@ -128,8 +126,6 @@ contract H8Coin {
 
         addPresident(president);
         initiatives.push(ini_);
- 
-
     }
 
 
@@ -149,14 +145,18 @@ contract H8Coin {
     function getMyInfo() public view returns (StudentInfo memory) {
         require(studentsMap[msg.sender].exists, "Unknown address.");
 
-
         return StudentInfo({
             name: studentsMap[msg.sender].name,
             year: studentsMap[msg.sender].year,
             score: getStudentScore(msg.sender),
-            ap:  studentsMap[msg.sender].ap,
-            pontos: scoreMap[msg.sender]
+            ap:  studentsMap[msg.sender].ap
         });
+    }
+
+    function getPointsInfo() public view returns (ScoreEntry[] memory){
+        require(studentsMap[msg.sender].exists, "Unknown address.");
+
+        return scoreMap[msg.sender];
     }
 
     /**
@@ -242,12 +242,23 @@ contract H8Coin {
     function kickStudent(address target) public {
         require(msg.sender == cohab.director, "Not authorized.");
 
-        for (uint a = 0; a < aps.length; a++) {
-            for (uint s = 0; s < aps[a].numSpots; s++) {
-                if (aps[a].students[s] == target) {
-                    aps[a].students[s] = address(0);
-                }
+        Student memory aux = studentsMap[target];
+
+        for (uint s = 0; s < apsMap[aux.ap].numSpots; s++) {
+            if (apsMap[aux.ap].students[s] == target) {
+                apsMap[aux.ap].students[s] = noAdd;
             }
         }
     }
+
+    function assignApStudent(address target, string memory apa, uint pos) public {
+        require(msg.sender == cohab.director, "Not authorized.");
+
+        kickStudent(target);
+
+        studentsMap[target].ap = apa;
+        apsMap[apa].students[pos] == target;
+    }
+
 }
+
