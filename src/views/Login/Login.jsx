@@ -84,7 +84,7 @@ const Login = () => {
                       backgroundColor: "gray",
                     }}
                   >
-                    "Selecionar"
+                    Selecionar
                   </CustomButton>}
                 </td>
               </tr>
