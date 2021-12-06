@@ -25,21 +25,16 @@ function Home() {
               alt="Blockchain logo"
               width="100vw"
             />
+            <p style={{ color: "black" }}>Escolha abaixo sua opção de login</p>
           </Grid>
           <Grid item xs={size / 2 + 2}>
-            <CustomButton href="/login/default">
-              Acessar como Usuário Padrão
-            </CustomButton>
+            <CustomButton href="/login/default">Usuário Padrão</CustomButton>
           </Grid>
           <Grid item xs={size / 2 + 2}>
-            <CustomButton href="/login/special">
-              Acessar como Presidente
-            </CustomButton>
+            <CustomButton href="/login/special">Presidente</CustomButton>
           </Grid>
           <Grid item xs={size / 2 + 2}>
-            <CustomButton href="/login/admin">
-              Acessar como COHAB (Admin)
-            </CustomButton>
+            <CustomButton href="/login/admin">COHAB (Admin)</CustomButton>
           </Grid>
         </CustomGrid>
       </header>

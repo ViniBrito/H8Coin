@@ -20,3 +20,12 @@ code {
 body {
   background-color: black;
 }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 1%;
+  white-space: nowrap;
+  background-color: white;
+}
