@@ -32,6 +32,11 @@ function Home() {
             </CustomButton>
           </Grid>
           <Grid item xs={size / 2 + 2}>
+            <CustomButton href="/login/special">
+              Acessar como Presidente
+            </CustomButton>
+          </Grid>
+          <Grid item xs={size / 2 + 2}>
             <CustomButton href="/login/admin">
               Acessar como COHAB (Admin)
             </CustomButton>
