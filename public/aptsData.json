@@ -1,9 +1,9 @@
 {
   "Address": "0x0",
   "data": [
-    { "block": "A", "apt": "123", "G": 1, "J": [1, 2, 3] },
-    { "block": "A", "apt": "131", "G": 2, "J": [1, 2, 3] },
-    { "block": "B", "apt": "212", "G": 3, "J": [1, 2, 3] },
-    { "block": "C", "apt": "312", "G": 4, "J": [1, 2, 3] }
+    { "apBlock": "A", "apCode": "123", "numSpots": 1, "students": [] },
+    { "apBlock": "A", "apCode": "131", "numSpots": 2, "students": [1, 2, 3] },
+    { "apBlock": "B", "apCode": "212", "numSpots": 3, "students": [1, 2, 3] },
+    { "apBlock": "C", "apCode": "312", "numSpots": 4, "students": [1, 2, 3] }
   ]
 }

@@ -69,22 +69,23 @@ const Login = () => {
           <tbody>
             {apts.map((item) => (
               <tr className="init-item">
-                <td align="center"> {item.block}</td>
-                <td align="center"> {item.apt}</td>
-                <td align="center"> {item.G}</td>
-                <td align="center"> {getFree(item.J)}</td>
+                <td align="center"> {item.apBlock}</td>
+                <td align="center"> {item.apCode}</td>
+                <td align="center"> {item.numSpots}</td>
+                <td align="center"> {getFree(item.students)}</td>
                 <td align="center">
+		  {getFree(item.students).length > 0 && 
                   <CustomButton
                     style={{
                       marginBottom: "5%",
                       fontWeight: "bold",
                       color: "white",
-                      fontSize: "10px",
+                      fontSize: "5px",
                       backgroundColor: "gray",
                     }}
                   >
                     Selecionar
-                  </CustomButton>
+                  </CustomButton>}
                 </td>
               </tr>
             ))}
