@@ -1,9 +1,0 @@
-{
-  "Address": "0x0",
-  "data": [
-    { "apBlock": "A", "apCode": "123", "numSpots": 1, "students": [] },
-    { "apBlock": "A", "apCode": "131", "numSpots": 2, "students": [1, 2, 3] },
-    { "apBlock": "B", "apCode": "212", "numSpots": 3, "students": [1, 2, 3] },
-    { "apBlock": "C", "apCode": "312", "numSpots": 4, "students": [1, 2, 3] }
-  ]
-}
