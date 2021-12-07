@@ -8,6 +8,16 @@ Autores:
 - Nacib Neme
 - Vinícius Brito
 
+## Testando
+
+Para testar este projeto, você precisa ter o MetaMask instalado como extensão no seu navegador.
+
+Na tela inicial, clique em "Conectar com o MetaMask". Complete a autorização conectando as contas pertinentes.
+
+Após o login, o aplicativo vai consultar a blockchain para determinar o tipo de conta. Por padrão, apenas as contas documentadas em `h8coin.sol` conseguirão acessar. Caso você queira testar com outras contas, edite o contrato (sugestão de IDE: Remix), faça o deploy e atualize o endereço em `web3.js`.
+
+Todos os testes foram realizados na testnet Ropsten. Lembre-se de configurar o MetaMask para essa rede.
+
 ## Scripts disponíveis
 
 No diretório raiz, podem ser executados os seguintes comandos:
