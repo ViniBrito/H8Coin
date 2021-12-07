@@ -1,9 +1,9 @@
 {
   "Address": "0x0",
   "data": [
-    { "init": "ITAndroids", "points": "2" },
-    { "init": "BAJA", "points": "3" },
-    { "init": "ITA Júnior", "points": "2" },
-    { "init": "CASD", "points": "1" }
+    { "initiative": "ITAndroids", "score": "2" },
+    { "initiative": "BAJA", "score": "3" },
+    { "initiative": "ITA Júnior", "score": "2" },
+    { "initiative": "CASD", "score": "1" }
   ]
 }

@@ -7,7 +7,7 @@ const getPoints = async (address) => {
   });
   const object = response.json();
   console.log(object);
-  return object;
+  return object.data;
 };
 
 const getApts = async () => {
@@ -19,7 +19,7 @@ const getApts = async () => {
   });
   const object = response.json();
   console.log(object);
-  return object;
+  return object.data;
 };
 
 const sendForm = (data) => {

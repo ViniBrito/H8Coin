@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import React from "react";
 import { CustomGrid, Item } from "../../components/CustomGrid";
 import Header from "../../components/Header";
@@ -8,12 +7,12 @@ import FormAlert from "../../components/FormAlert";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { sendForm } from "../../mock";
+import { assignScore } from "../../web3";
 import "./Form.css";
 
-const Form = () => {
+const Form = (props) => {
   const size = 10;
-  const { user } = useParams();
-  const params = new URLSearchParams(window.location.search);
+
   const [addrLabel, setAddrLabel] = useState("");
   const [semLabel, setSemLabel] = useState("");
   const [ptsLabel, setPtsLabel] = useState("");
@@ -96,7 +95,7 @@ const Form = () => {
     <div className="main">
       <CustomGrid>
         <Grid item xs={size}>
-          {user === "special" && (
+          {props.formId === "0" && (
             <>
               <Header>Atribuição de pontos de membros</Header>
               <Grid item>
@@ -144,16 +143,21 @@ const Form = () => {
                             checkPts(ptsLabel)
                           )
                         )
-                          sendForm({
-                            address: addrLabel,
-                            semester: semLabel,
-                            points: parseInt(10 * parseFloat(ptsLabel)),
+                          assignScore(addrLabel, parseInt(semLabel.replace("/", "")), parseInt(10 * parseFloat(ptsLabel))).then((result) => {
+                            alert(result);
+                            if (result === "OK") props.backCallback();
                           });
                         setOpen(true);
                       }}
                       variant="contained"
                     >
                       Enviar
+                    </Button>
+                    <Button
+                      style={{ padding: "0.5%" }}
+                      onClick={props.backCallback}
+                    >
+                      Voltar
                     </Button>
                     <FormAlert
                       open={open}
@@ -169,7 +173,7 @@ const Form = () => {
               </Grid>
             </>
           )}
-          {user === "admin" && params.get("id") === "1" && (
+          {props.formId === "1" && (
             <>
               <Header>Adição de apartamento</Header>
               <Grid item>
@@ -230,7 +234,7 @@ const Form = () => {
               </Grid>
             </>
           )}
-          {user === "admin" && params.get("id") === "2" && (
+          {props.formId === "2" && (
             <>
               <Header>Adição de apartamento</Header>
               <Grid item>
@@ -299,7 +303,7 @@ const Form = () => {
               </Grid>
             </>
           )}
-          {user === "admin" && params.get("id") === "3" && (
+          {props.formId === "3" && (
             <>
               <Header>Remoção de morador</Header>
               <Grid item>

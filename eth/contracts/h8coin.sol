@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: WTFPL
 
 /*
-Deployed at: 0x500424ddE53558FA4e7952843d9013013622dEfE
+Deployed at: 0xbe0BFe2E5Ac076c9928CeB9092D15ec3CF8B26d9 (Ropsten)
 Cohab address: 0x641AeAaab0b7b8bbCE400c8DeeFA0aB03af2F076
 
 Hardcoded data on constructor:
@@ -69,6 +69,7 @@ contract H8Coin {
     }
 
     Initiative[] public initiatives;
+    Apartment[] public aps;
     Cohab public cohab;
 
     address constant public noAdd = 0x0000000000000000000000000000000000000000;
@@ -85,8 +86,8 @@ contract H8Coin {
         addAp("B", "241", 4);
 
         addStudent(0x4B2b6157f5fFB69261aFA5e2d7255498050CA9c2, "Fulano", 2018, true, "101", 2);
-        addStudent(0xA84077dF2d44B28296A2A6cA3a5736FF4F6382be, "Ciclano", 2018, true, "240", 0);
-        addStudent(0xDE37B3B1eaB580Fb247E1D0CC544AAB23Eb15ecc, "Juliano", 2019, true, "240", 1);
+        addStudent(0xA84077dF2d44B28296A2A6cA3a5736FF4F6382be, "Ciclano", 2018, false, "240", 0);
+        addStudent(0xDE37B3B1eaB580Fb247E1D0CC544AAB23Eb15ecc, "Juliano", 2019, false, "240", 1);
     }
 
     mapping(address => Student) public studentsMap;
@@ -136,6 +137,7 @@ contract H8Coin {
             students: [noAdd, noAdd, noAdd, noAdd, noAdd, noAdd]
         });
         apsMap[apCode] = ap_;
+        aps.push(ap_);
     }
 
     function addInitiative(string memory name, address president) public {
@@ -156,6 +158,10 @@ contract H8Coin {
     function getApInfo(string memory apCode) public view returns (Apartment memory) {
         require(apsMap[apCode].numSpots > 0, "No such apartment.");
         return apsMap[apCode];
+    }
+
+    function listAps() public view returns (Apartment[] memory apList) {
+        apList = aps;
     }
 
     /**
@@ -194,15 +200,15 @@ contract H8Coin {
      * @dev Returns current score for student.
      * @param addr student address
      */
-    function getStudentScore(address addr) public view returns (uint16 score_) {
+    function getStudentScore(address addr) public view returns (uint16 score) {
         for (uint s = 0; s < scoreMap[addr].length; s++) {
-            score_ += scoreMap[addr][s].score;
+            score += scoreMap[addr][s].score;
         }
     }
 
     function myInitiative(address addr) public view returns (string memory name) {
         for (uint i = 0; i < initiatives.length; i++) {
-            if (initiatives[i].president == addr ) {
+            if (initiatives[i].president == addr) {
                 name = initiatives[i].name;
             }
         }
